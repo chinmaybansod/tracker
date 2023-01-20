@@ -129,10 +129,6 @@ export const stateAbbr = {
           "Abbreviation": "CH"
       },
       {
-          "State": "Dadra and Nagar Haveli",
-          "Abbreviation": "DH"
-      },
-      {
           "State": "Daman and Diu",
           "Abbreviation": "DN"
       },
