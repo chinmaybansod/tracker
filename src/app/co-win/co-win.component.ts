@@ -34,8 +34,6 @@ export class CoWinComponent {
     this.stateMap = stateAbbr;
     this.cowinService.getAllStates().subscribe((result) => {
       this.countryMap = result;
-      console.log(result);
-      console.log(this.countryMap);
       this.populateChartData('MH');
       this.createChart();
     })
@@ -74,10 +72,6 @@ export class CoWinComponent {
     this.stateMap.result.forEach(element => {
       this.states.push(element.State)
     });
-
-    console.log(this.states);
-
-
   }
 
   clearData() {
@@ -108,13 +102,9 @@ export class CoWinComponent {
 
     this.myChart = echarts.init(element!, 'dark');
 
-    const dates = this.totalConfirmed.map(function (item) {
+    const dates = this.totalTested.map(function (item) {
       return item[0];
     });
-
-    console.log(this.totalConfirmed);
-
-
 
     this.myChart.setOption({
       legend: {

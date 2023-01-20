@@ -18,7 +18,7 @@ export const stateAbbr = {
       },
       {
           "State": "Chhattisgarh",
-          "Abbreviation": "CG"
+          "Abbreviation": "CT"
       },
       {
           "State": "Goa",
@@ -102,7 +102,7 @@ export const stateAbbr = {
       },
       {
           "State": "Uttarakhand",
-          "Abbreviation": "UK"
+          "Abbreviation": "UT"
       },
       {
           "State": "Uttar Pradesh",
@@ -134,7 +134,7 @@ export const stateAbbr = {
       },
       {
           "State": "Daman and Diu",
-          "Abbreviation": "DD"
+          "Abbreviation": "DN"
       },
       {
           "State": "Delhi",
