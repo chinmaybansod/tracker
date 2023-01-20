@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="dropdown">
+    <p class="font-monospace">Select State</p>
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="font-monospace">{{selectedState}}</span>
+    </button>
+    <ul class="dropdown-menu scrollable-menu">
+      <li *ngFor="let item of states" (click)="switchStates(item)"><a class="dropdown-item font-monospace">{{item}}</a></li>
+    </ul>
+  </div>
+</div>
+<div class="container mt-1 mb-4">
+  <div id="main" style="width: 100%; height: 72vh"></div>
+</div>
