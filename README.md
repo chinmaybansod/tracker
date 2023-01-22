@@ -1,5 +1,7 @@
 # Tracker
 
+Covid cases tracker till Oct 31st, 2021. I have used a free api https://data.covid19india.org/v4/min/timeseries.min.json. This api contains data for all confirmed, deceased, tested, recovered, vaccinated1 & vaccinated2 count for delta variant, delta7 variant and total covid cases each.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
 
 ## Development server
