@@ -5,12 +5,17 @@ import { CoWinComponent } from './co-win/co-win.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'reservoir',
     component: ReservoirComponent
   },
   {
     path: 'covid',
     component: CoWinComponent
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'reservoir'
   }
 ];
 
