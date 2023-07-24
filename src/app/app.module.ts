@@ -5,11 +5,13 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoWinComponent } from './co-win/co-win.component';
+import { ReservoirComponent } from './reservoir/reservoir.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CoWinComponent
+    CoWinComponent,
+    ReservoirComponent
   ],
   imports: [
     BrowserModule,
