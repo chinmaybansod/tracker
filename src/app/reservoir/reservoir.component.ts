@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { DataService } from './service/data.service';
 import * as echarts from 'echarts';
 

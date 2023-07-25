@@ -6,5 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  changePageBool = false;
 
+  toggle(value: boolean) {
+    this.changePageBool = value;
+  }
 }
