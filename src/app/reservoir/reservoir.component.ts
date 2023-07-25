@@ -145,12 +145,18 @@ export class ReservoirComponent implements OnInit{
 
   onItemDeSelect(item: any) {
     this.chartResultData = [];
-    const temp:ChartData[] = [];
-    this.chartData.forEach(element => {
-      if(element.name === item.item_text) {
-        temp.push(element)
-      }
-    });
+    let temp: ChartData[] = [];
+    if(this.selectedItems.length > 0) {
+      this.chartData.forEach(element => {
+        this.selectedItems.forEach(element2 => {
+          if(element2.item_text === element.name) {
+              temp.push(element);
+          }
+        });
+      });
+    } else if(this.selectedItems.length === 0) {
+      temp = this.chartData;
+    }
     this.chartResultData = temp;
     setTimeout(() => {   
       this.createReservoirChart(); 
@@ -163,13 +169,5 @@ export class ReservoirComponent implements OnInit{
     setTimeout(() => {   
       this.createReservoirChart(); 
     }, 100);
-  }
-
-  caller(): void {
-
-  }
-
-  createNewCharts(): void {
-
   }
 }
