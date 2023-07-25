@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { CoWinComponent } from './co-win/co-win.component';
 import { ReservoirComponent } from './reservoir/reservoir.component';
+import { FormsModule } from '@angular/forms';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ReservoirComponent } from './reservoir/reservoir.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    FormsModule,
+    HttpClientModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
