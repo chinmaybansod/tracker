@@ -1,11 +1,16 @@
 <div class="container">
   <div class="d-flex justify-content-center flex-gap-15">
     <span>
-      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" routerLink="">Reservoir Storage Status</a>
+      <a class="pointer link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+        (click)="toggle(false)">Reservoir Storage Status</a>
     </span>
     <span>
-      <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" routerLink="covid">Covid Tracker</a>
+      <a class="pointer link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+      (click)="toggle(true)">Covid Tracker</a>
     </span>
   </div>
 </div>
-<router-outlet></router-outlet>
+<div [ngSwitch]="changePageBool">
+  <app-reservoir *ngSwitchCase="false"></app-reservoir>
+  <app-co-win *ngSwitchCase="true"></app-co-win>
+</div>
