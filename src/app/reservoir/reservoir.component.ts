@@ -22,13 +22,12 @@ export class ReservoirComponent implements OnInit{
   constructor(private dataService: DataService){
   }
 
-  ngOnInit(): void {
-    
+  ngOnInit(): void {    
     this.dataService.getWaterData().subscribe(result => {
       if(result && result.values.length > 0) {
         const values = result.values;
         values.forEach((element, index) => {
-          if(index > 3) {
+          if(index > 4) {
             this.chartData.push({
               name: element[2],
               value: element[7],
