@@ -15,8 +15,8 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getWaterData(): Observable<Reservoir> {
-    const url = 'https://sheets.googleapis.com/v4/spreadsheets/1Nxi7VIsUgxAy1c70o-NQXE9EdQLRZ5N-jA39LUmpEIk/values/Sheet1?key=AIzaSyBbit_Rj0y2JHeugpwFX-K9Yw5i-pPFZT0'
-    return this.http.get<Reservoir>(url);
+  getWaterData(): Observable<any> {
+    const url = 'https://punefloodcontrol.com/api/bhimawater.php?id=2023-08-02'
+    return this.http.get<any>(url);
   }
 }
