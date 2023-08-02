@@ -38,51 +38,43 @@ export class ReservoirComponent implements OnInit{
   }
 
   ngOnInit(): void {    
+    const tempData: any[] = [];
+    const tempDropDownValues: { item_id: number; item_text: string; }[] = [];
     this.dataService.getWaterData().subscribe(result => {
-      if(result && result.values.length > 0) {
-        const values = result.values;
-        const tempDropDownValues: { item_id: number; item_text: string; }[] = [];
-        values.forEach((element, index) => {
-          if(index > 4) {
+      if (result) {
+        let i = 0;
+        for (const key in result[1]) {
+          if(key.includes('Per')) {
+            const element = result[1][key];
+            const rname = key.replace('Per', '');
             this.chartData.push({
-              name: element[2],
-              value: element[7],
-              id: element[2] + '-' + 'reservoir'
+              name: rname,
+              value: element,
+              id: rname + '-' + 'reservoir'
             })
             tempDropDownValues.push({
-              item_id: index,
-              item_text: element[2]
+              item_id: i,
+              item_text: rname
             })
+            i++;
           }
-        });
-        this.dropdownList = tempDropDownValues;
-        this.chartData.sort((a, b) => a.name.localeCompare(b.name));
-        this.chartResultData = this.chartData;
-        let updatedData = values[2][0].split('Please')[0].replace('\n', '');
-        const finalUpdatedData = updatedData.split(' ');
-        this.lastUpdated = finalUpdatedData[0].split('\n')[0] + ' ' + finalUpdatedData[1] + ' ' + finalUpdatedData[2];
-        /* this.dropdownList = [
-          { item_id: 1, item_text: 'Mumbai' },
-          { item_id: 2, item_text: 'Bangaluru' },
-          { item_id: 3, item_text: 'Pune' },
-          { item_id: 4, item_text: 'Navsari' },
-          { item_id: 5, item_text: 'New Delhi' }
-        ];
-        this.selectedItems = [
-          { item_id: 3, item_text: 'Pune' },
-          { item_id: 4, item_text: 'Navsari' }
-        ]; */
-        
-        setTimeout(() => {   
-          this.createReservoirChart(); 
-        }, 100);  
-      }
-    });
-  }
 
-  ngAfterViewInit(): void {    
-    
-  }
+          if(key === 'modified') {
+            const element = result[1][key];
+            this.lastUpdated = element;
+          }
+        }
+      }
+      this.dropdownList = tempDropDownValues;
+      
+      this.chartData.sort((a, b) => a.name.localeCompare(b.name));
+      this.chartResultData = this.chartData;
+      setTimeout(() => {   
+        this.createReservoirChart(); 
+      }, 100); 
+      
+    })
+   }
 
   createReservoirChart(): void {
     if(this.chartArray.length > 0) {
@@ -127,7 +119,6 @@ export class ReservoirComponent implements OnInit{
   }
 
   onItemSelect(item: any) {
-    /* this.selectedItems.push(item); */
     this.chartResultData = [];
     const temp:ChartData[] = [];
     this.chartData.forEach(element => {
