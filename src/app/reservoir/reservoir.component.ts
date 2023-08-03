@@ -25,8 +25,10 @@ export class ReservoirComponent implements OnInit{
   dropdownList: { item_id: number; item_text: string; }[] = [];
   selectedItems: { item_id: number; item_text: string; }[] = [];
   dropdownSettings: IDropdownSettings;
+  isError: boolean;
 
   constructor(private dataService: DataService){
+    this.isError = false;
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
@@ -38,10 +40,19 @@ export class ReservoirComponent implements OnInit{
     };
   }
 
-  ngOnInit(): void {    
-    const currentDate = moment().format('YYYY-MM-DD');
+  ngOnInit(): void {
+    this.getReservoirData();
+  }
+
+  getReservoirData(): void {    
+    let currentDate = moment();
+    if(currentDate.hours() < 8) {
+      currentDate = currentDate.subtract(1, 'day');
+    }
+
     const tempDropDownValues: { item_id: number; item_text: string; }[] = [];
-    this.dataService.getWaterData(currentDate).subscribe(result => {
+    
+    this.dataService.getWaterData(currentDate.format('YYYY-MM-DD')).subscribe(result => {
       if (result) {
         let i = 0;
         for (const key in result[1]) {
@@ -74,8 +85,13 @@ export class ReservoirComponent implements OnInit{
         this.createReservoirChart(); 
       }, 100); 
       
-    })
-   }
+    }, (error) => {
+      console.log(error);
+      this.isError = true;
+    }, () => {
+      this.isError = false;
+    })   
+  }
 
   createReservoirChart(): void {
     if(this.chartArray.length > 0) {
