@@ -15,8 +15,8 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getWaterData(): Observable<any> {
-    const url = 'https://punefloodcontrol.com/api/bhimawater.php?id=2023-08-02'
+  getWaterData(currentDate: string): Observable<any> {
+    const url = 'https://punefloodcontrol.com/api/bhimawater.php?id=' + currentDate;
     return this.http.get<any>(url);
   }
 }
