@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { DataService } from './service/data.service';
 import * as echarts from 'echarts';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
+import * as moment from 'moment';
 
 type ChartData = {
   value: string,
@@ -38,9 +39,9 @@ export class ReservoirComponent implements OnInit{
   }
 
   ngOnInit(): void {    
-    const tempData: any[] = [];
+    const currentDate = moment().format('YYYY-MM-DD');
     const tempDropDownValues: { item_id: number; item_text: string; }[] = [];
-    this.dataService.getWaterData().subscribe(result => {
+    this.dataService.getWaterData(currentDate).subscribe(result => {
       if (result) {
         let i = 0;
         for (const key in result[1]) {
