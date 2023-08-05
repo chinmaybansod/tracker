@@ -55,9 +55,9 @@ export class ReservoirComponent implements OnInit{
     this.dataService.getWaterData(currentDate.format('YYYY-MM-DD')).subscribe(result => {
       if (result) {
         let i = 0;
-        for (const key in result[1]) {
+        for (const key in result[0]) {
           if(key.includes('Per')) {
-            const element = result[1][key];
+            const element = result[0][key];
             const rname = key.replace('Per', '');
             this.chartData.push({
               name: rname,
@@ -72,7 +72,7 @@ export class ReservoirComponent implements OnInit{
           }
 
           if(key === 'modified') {
-            const element = result[1][key];
+            const element = result[0][key];
             this.lastUpdated = element;
           }
         }
