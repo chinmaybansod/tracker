@@ -3,11 +3,14 @@
         <h5 class="font-monospace">Water Storage for all reservoirs in Bhima Sub Basin.</h5>
         <small class="text-muted d-block">Last Updated: {{ lastUpdated | date : 'medium' }}</small>
     </div>
-    <div class="d-flex justify-content-center py-2">
-        <ng-multiselect-dropdown class="width" [placeholder]="'Select Reservoir'" [settings]="dropdownSettings"
-            [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
-            (onSelectAll)="onSelectAll($event)" (onDeSelect)="onItemDeSelect($event)">
-        </ng-multiselect-dropdown>
+    <div class="container">
+        <div class="d-flex justify-content-between py-2">
+            <ng-multiselect-dropdown class="width" [placeholder]="'Select Reservoir'" [settings]="dropdownSettings"
+                [data]="dropdownList" [(ngModel)]="selectedItems" (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)" (onDeSelect)="onItemDeSelect($event)">
+            </ng-multiselect-dropdown>
+            <input type="date" id="myDate" [value]="selectedDate" (change)="dateSelected()">
+        </div>
     </div>
     <div class="row">
         <div class="col-md-4" *ngFor="let item of chartResultData">
