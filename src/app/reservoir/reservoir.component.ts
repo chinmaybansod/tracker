@@ -26,6 +26,7 @@ export class ReservoirComponent implements OnInit{
   selectedItems: { item_id: number; item_text: string; }[] = [];
   dropdownSettings: IDropdownSettings;
   isError: boolean;
+  selectedDate:any;
 
   constructor(private dataService: DataService){
     this.isError = false;
@@ -41,14 +42,14 @@ export class ReservoirComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getReservoirData();
-  }
-
-  getReservoirData(): void {    
     let currentDate = moment();
     if(currentDate.hours() < 8) {
       currentDate = currentDate.subtract(1, 'day');
     }
+    this.getReservoirData(currentDate);
+  }
+
+  getReservoirData(currentDate: any): void {    
 
     const tempDropDownValues: { item_id: number; item_text: string; }[] = [];
     
@@ -177,5 +178,11 @@ export class ReservoirComponent implements OnInit{
     setTimeout(() => {   
       this.createReservoirChart(); 
     }, 100);
+  }
+
+  dateSelected(): void {
+    this.chartResultData = [];
+    this.chartData= [];
+    this.getReservoirData(moment(this.selectedDate));
   }
 }
