@@ -7,12 +7,14 @@ import { CoWinComponent } from './co-win/co-win.component';
 import { ReservoirComponent } from './reservoir/reservoir.component';
 import { FormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { RainfallComponent } from './rainfall/rainfall.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CoWinComponent,
-    ReservoirComponent
+    ReservoirComponent,
+    RainfallComponent
   ],
   imports: [
     BrowserModule,
