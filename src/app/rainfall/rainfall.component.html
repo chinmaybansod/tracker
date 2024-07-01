@@ -3,6 +3,9 @@
   <div class="mt-2 text-center">
     <h5 class="font-monospace">Daily Trend chart for Weather in Pune ({{date}})</h5>
   </div>
+  <div class="mt-2 text-center">
+    <span class="font-monospace">Today's Status</span>
+  </div>
   <div class="text-center font-monospace d-flex flex-gap-15 align-items-center justify-content-center">
     <span>Chances of rain: {{max?.daily_chance_of_rain}}%</span>
     <span>
@@ -12,8 +15,11 @@
       {{max?.mintemp_c + '°C'}} - {{max?.maxtemp_c + '°C'}}
     </span>
   </div>
+  <div class="mt-2 text-center">
+    <span class="font-monospace">Current Status</span>
+  </div>
   <div class="text-center font-monospace d-flex flex-gap-15 align-items-center justify-content-center">
-    <span>Current Status: {{current?.last_updated}}</span>
+    <span>{{current?.last_updated}}</span>
     <span>
       <img src={{currentCondition?.icon}} height="40" width="40">
     </span>
