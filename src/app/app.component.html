@@ -2,15 +2,20 @@
   <div class="d-flex justify-content-center flex-gap-15 py-2">
     <span>
       <a class="pointer link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-        (click)="toggle(false)">Reservoir Storage Status</a>
+        (click)="toggle('reservoir')">Reservoir Storage Status</a>
     </span>
     <span>
       <a class="pointer link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
-      (click)="toggle(true)">Covid Tracker</a>
+        (click)="toggle('rainfall')">Weather Status</a>
+    </span>
+    <span>
+      <a class="pointer link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+      (click)="toggle('covid')">Covid Tracker</a>
     </span>
   </div>
 </div>
 <div [ngSwitch]="changePageBool">
-  <app-reservoir *ngSwitchCase="false"></app-reservoir>
-  <app-co-win *ngSwitchCase="true"></app-co-win>
+  <app-reservoir *ngSwitchCase="'reservoir'"></app-reservoir>
+  <app-rainfall *ngSwitchCase="'rainfall'"></app-rainfall>
+  <app-co-win *ngSwitchCase="'covid'"></app-co-win>
 </div>
