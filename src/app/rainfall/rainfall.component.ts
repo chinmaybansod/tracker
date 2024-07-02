@@ -97,6 +97,10 @@ export class RainfallComponent {
           interval: 1
         }
       },
+      grid: {
+        left: 47,
+        right: 45
+      },
       yAxis: [
         {
           name: 'Temperature',

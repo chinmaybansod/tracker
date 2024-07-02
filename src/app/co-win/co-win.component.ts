@@ -139,7 +139,8 @@ export class CoWinComponent {
         fontFamily : 'monospace'
       },
       grid: {
-        bottom: 80,
+        left: 80,
+        right: 50
       },
       dataZoom: [
         {
