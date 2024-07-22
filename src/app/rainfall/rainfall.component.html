@@ -6,7 +6,7 @@
   <div class="mt-2 text-center">
     <span class="font-monospace">Today's Status</span>
   </div>
-  <div class="text-center font-monospace d-flex flex-gap-15 align-items-center justify-content-center">
+  <div class="text-center font-monospace d-flex flex-gap-15 align-items-center justify-content-center" *ngIf="showData && !error">
     <span>Chances of rain: {{max?.daily_chance_of_rain}}%</span>
     <span>
       <img src={{max?.condition?.icon}} height="40" width="40">
@@ -15,10 +15,16 @@
       {{max?.mintemp_c + '°C'}} - {{max?.maxtemp_c + '°C'}}
     </span>
   </div>
+  <div *ngIf="!showData" class="d-flex justify-content-center">
+    <img src="../../assets/loading-gif.gif" alt="loader" width="30" height="30" />
+  </div>
+  <div *ngIf="error" class="d-flex justify-content-center mt-2">
+    <p>Something went wrong! Please try later.</p>
+  </div>
   <div class="mt-2 text-center">
     <span class="font-monospace">Current Status</span>
   </div>
-  <div class="text-center font-monospace d-flex flex-gap-15 align-items-center justify-content-center">
+  <div class="text-center font-monospace d-flex flex-gap-15 align-items-center justify-content-center" *ngIf="showData && !error">
     <span>{{current?.last_updated}}</span>
     <span>
       <img src={{currentCondition?.icon}} height="40" width="40">
@@ -30,7 +36,20 @@
       {{current?.temp_c + '°C'}}
     </span>
   </div>
+  <div *ngIf="!showData" class="d-flex justify-content-center">
+    <img src="../../assets/loading-gif.gif" alt="loader" width="30" height="30" />
+  </div>
+  <div *ngIf="error" class="d-flex justify-content-center mt-2">
+    <p>Something went wrong! Please try later.</p>
+  </div>
 </div>
 <div class="container mb-4">
+  <hr />
+  <div *ngIf="!showData" class="d-flex justify-content-center mt-2">
+    <img src="../../assets/loading-gif.gif" alt="loader" width="30" height="30" />
+  </div>
+  <div *ngIf="error" class="d-flex justify-content-center mt-2">
+    <p>Something went wrong! Please try later.</p>
+  </div>
   <div id="main" style="width: 100%; height: 72vh"></div>
 </div>
